@@ -9,8 +9,8 @@ const ToDoList = () => {
         setTodos(todos.concat(inputValue))
         e.target.value = ""
     }
-    function deleteTask(index, e) {
-        setTodos(todos.splice(index, e))
+    function deleteTask(task, index) {
+        setTodos(todos.filter((task, taskIndex) => index != taskIndex))
 
     }
 
@@ -36,10 +36,10 @@ const ToDoList = () => {
                 <ul className="list-group">
 
                     {todos.map((task, index) => (
-                        <li className="list-group-item disabled" aria-disabled="true" key={index}
+                        <li className="list-group-item" key={index}
                         >{task}  <button type="button" class="btn btn-dark"
                             onClick={(e) =>
-                                deleteTask(index, e)}
+                                deleteTask(task, index)}
                         >X</button>
 
                         </li>
